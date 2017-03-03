@@ -1,5 +1,4 @@
-FROM haproxy:1.6.3
+FROM haproxy:1.7.3-alpine
 
-COPY entrypoint.sh /
-RUN chmod 755 /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+COPY docker-entrypoint.sh /
+RUN chmod 755 /entrypoint.sh && groupadd haproxy && useradd -g haproxy haproxy
